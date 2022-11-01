@@ -8,6 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
+import { UserAuthModule } from './user-auth/user-auth.module';
 const URI =
   'mongodb+srv://dipu-kr-sah:CjStrCoV1ploZsQQ@taskmanager.eqdq9.mongodb.net/?retryWrites=true&w=majority';
 
@@ -23,6 +24,7 @@ const URI =
     MongooseModule.forRoot(URI),
     UsersModule,
     AuthModule,
+    UserAuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

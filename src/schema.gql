@@ -2,13 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type UserAuth {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   users: String!
+  userAuth(id: Int!): UserAuth!
 }
 
 type Mutation {
   """This is to cereate a new user"""
   createUser(userDetails: CreateUserInput!): JSONObject!
+  createUserAuth(createUserAuthInput: CreateUserAuthInput!): UserAuth!
+  updateUserAuth(updateUserAuthInput: UpdateUserAuthInput!): UserAuth!
+  removeUserAuth(id: Int!): UserAuth!
 }
 
 """
@@ -23,4 +32,15 @@ input CreateUserInput {
   email: String!
   password: String!
   reTypedPassword: String!
+}
+
+input CreateUserAuthInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserAuthInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
