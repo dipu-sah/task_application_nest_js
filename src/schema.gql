@@ -7,8 +7,14 @@ type Query {
 }
 
 type Mutation {
-  createUser(userDetails: CreateUserInput!): String!
+  """This is to cereate a new user"""
+  createUser(userDetails: CreateUserInput!): JSONObject!
 }
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
 
 input CreateUserInput {
   firstName: String!

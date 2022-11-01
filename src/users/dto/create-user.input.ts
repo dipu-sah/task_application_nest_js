@@ -8,12 +8,16 @@ import {
   Matches,
   MinLength,
   Validate,
+  ValidateBy,
 } from 'class-validator';
+import { Match } from 'utils/customValidators/Match';
+import { iUser } from '../entities/user.entity';
 
 @InputType()
-export class CreateUserInput {
+export class CreateUserInput implements iUser {
   @IsDefined()
   @Matches(/[A-Za-z]+/, {
+    always: true,
     message: 'please provide characters only in first name',
   })
   @Field((type) => String)
@@ -43,5 +47,6 @@ export class CreateUserInput {
   @IsAlphanumeric()
   @IsDefined()
   @Field((type) => String)
+  @Match('password')
   public reTypedPassword: string;
 }
