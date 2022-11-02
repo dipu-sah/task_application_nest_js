@@ -23,7 +23,7 @@ export class UsersService {
     }
   }
 
-  findOne(email: string) {
+  findByEmail(email: string) {
     return this.User.findOne({
       email: email,
     }).then((e) => {

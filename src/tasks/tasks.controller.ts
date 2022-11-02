@@ -6,14 +6,17 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto, ParmasValidator } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ObjectId } from 'mongoose';
+import { JwtAuthGuard } from 'utils/Guards/JwtGuard';
 
 @Controller('tasks')
+@UseGuards(JwtAuthGuard)
 @ApiTags('Taks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
