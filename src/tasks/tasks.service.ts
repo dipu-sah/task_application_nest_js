@@ -11,19 +11,21 @@ export class TasksService {
     return new this.Task({ ...createTaskDto }).save();
   }
 
-  findAll() {
-    return this.Task.find();
+  findAll(userId: ObjectId) {
+    return this.Task.find({ user_id: userId }).populate('userId');
   }
 
-  findOne(id: ObjectId) {
-    return this.Task.findById(id);
+  findOne(id: ObjectId, userId: ObjectId) {
+    return this.Task.find({ _id: id, user_id: userId });
   }
 
-  update(id: ObjectId, updateTaskDto: UpdateTaskDto) {
-    return this.Task.findByIdAndUpdate(id, updateTaskDto, { new: true });
+  update(id: ObjectId, user_id: ObjectId, updateTaskDto: UpdateTaskDto) {
+    return this.Task.findOneAndUpdate({ _id: id, user_id }, updateTaskDto, {
+      new: true,
+    });
   }
 
-  remove(id: ObjectId) {
-    return this.Task.findByIdAndDelete(id);
+  remove(id: ObjectId, user_id: ObjectId) {
+    return this.Task.findOneAndDelete({ _id: id, user_id });
   }
 }

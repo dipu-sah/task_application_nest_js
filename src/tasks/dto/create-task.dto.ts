@@ -1,8 +1,11 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsDefined, IsString, IsMongoId } from 'class-validator';
-import { ObjectId } from 'mongoose';
+import { ApiHeader, ApiProperty } from '@nestjs/swagger';
+import { IsDefined, IsString, IsMongoId, IsJWT } from 'class-validator';
+import { ObjectId, Schema } from 'mongoose';
+import { iTask } from '../entities/Task';
 
-export class CreateTaskDto {
+export class CreateTaskDto implements iTask {
+  userId: Schema.Types.ObjectId;
+
   @ApiProperty({
     required: true,
     example: 'This is Title of the task',

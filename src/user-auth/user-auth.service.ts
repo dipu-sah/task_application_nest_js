@@ -35,4 +35,9 @@ export class UserAuthService extends PassportStrategy(Strategy) {
         throw new UnauthorizedException();
       });
   }
+  validate(payload: Record<string, string>) {
+    return this.userService.findByEmail(payload.email).catch((e) => {
+      throw new UnauthorizedException();
+    });
+  }
 }

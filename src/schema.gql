@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Query {
-  users: String!
+  userExists(email: String!): Boolean!
   login(loginDetails: CreateUserAuthInput!): String!
 }
 
@@ -14,7 +14,7 @@ input CreateUserAuthInput {
 
 type Mutation {
   """This is to cereate a new user"""
-  createUser(userDetails: CreateUserInput!): JSONObject!
+  new(userDetails: CreateUserInput!): JSONObject!
 }
 
 """

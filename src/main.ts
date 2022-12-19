@@ -18,9 +18,20 @@ async function bootstrap() {
     .setTitle('Available Tasks Api')
     .setDescription('The cats API description')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        description: 'Please add a bearer token',
+        name: 'Authorization',
+        in: 'Header',
+        type: 'http',
+        scheme: 'Bearer',
+        bearerFormat: 'Bearer',
+      },
+      'userToken',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
-  await app.listen(3000);
+  await app.listen(8000);
 }
 bootstrap();

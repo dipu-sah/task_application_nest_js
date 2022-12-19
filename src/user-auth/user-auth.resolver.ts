@@ -4,7 +4,7 @@ import { UserAuth } from './entities/user-auth.entity';
 import { CreateUserAuthInput } from './dto/create-user-auth.input';
 import { UpdateUserAuthInput } from './dto/update-user-auth.input';
 
-@Resolver('Auth')
+@Resolver('auth')
 export class UserAuthResolver {
   constructor(private readonly userAuthService: UserAuthService) {}
 

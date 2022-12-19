@@ -8,7 +8,7 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Mutation((returns) => GraphQLJSONObject, {
-    name: 'createUser',
+    name: 'new',
     nullable: false,
     description: 'This is to cereate a new user',
   })
@@ -16,13 +16,17 @@ export class UsersResolver {
     @Args('userDetails')
     createUserInput: CreateUserInput,
   ) {
+    console.log(createUserInput);
+
     return this.usersService.create(createUserInput);
   }
 
-  @Query((returns) => String, {
-    name: 'users',
+  @Query((returns) => Boolean, {
+    name: 'userExists',
   })
-  findAll() {
-    return 'OK';
+  async findAll(@Args('email') email: string) {
+    return !!(await this.usersService.findByEmail(email).catch((e) => {
+      return false;
+    }));
   }
 }
