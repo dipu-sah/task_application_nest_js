@@ -14,8 +14,6 @@ export class UsersService {
     try {
       return await new this.User(createUserInput).save();
     } catch (e) {
-      console.log(typeof e);
-
       throw new HttpException(
         { message: 'unable to create new user', reason: e },
         400,

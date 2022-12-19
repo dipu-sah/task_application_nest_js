@@ -8,7 +8,7 @@ import {
 
 export function Match(property: string, validationOptions?: ValidationOptions) {
   return (object: Object, propertyName: string) => {
-    console.log(object);
+    // console.log(object);
 
     registerDecorator({
       target: object.constructor,

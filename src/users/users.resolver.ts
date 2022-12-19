@@ -16,8 +16,6 @@ export class UsersResolver {
     @Args('userDetails')
     createUserInput: CreateUserInput,
   ) {
-    console.log(createUserInput);
-
     return this.usersService.create(createUserInput);
   }
 
