@@ -26,6 +26,11 @@ export class TasksService {
   }
 
   remove(id: ObjectId, user_id: ObjectId) {
-    return this.Task.findOneAndDelete({ _id: id, user_id });
+    return this.Task.findOneAndDelete({ _id: id, user_id }).then((e) => {
+      if (e) {
+        return e;
+      }
+      return 'Nothing to delete';
+    });
   }
 }
